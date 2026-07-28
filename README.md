@@ -1,5 +1,7 @@
 # Security Advisory: Unauthenticated Memory Leak Leads To Memory Exhaustion (TinyWeb)
 
+**Assigned CVE ID:** CVE-2026-67183
+
 ## Summary
 
 TinyWeb allocates several objects while parsing each request and never frees them. The request and header structures have no destructors, and nothing deletes them after the response is sent. Worker memory grows with every request and never drops, so a steady stream of ordinary requests drives the worker out of memory.
